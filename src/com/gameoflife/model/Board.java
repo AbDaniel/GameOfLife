@@ -1,6 +1,5 @@
-package com.newgameoflife;
+package com.gameoflife.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Board {

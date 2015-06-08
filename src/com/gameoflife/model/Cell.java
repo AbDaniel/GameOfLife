@@ -1,10 +1,14 @@
-package com.newgameoflife;
+package com.gameoflife.model;
+
+import java.util.ArrayList;
 
 public class Cell {
 
     private boolean alive;
+    private ArrayList<Cell> neigbhours;
 
-    public Cell() {
+    public Cell(ArrayList<Cell> neighbours) {
+        this.neigbhours = neighbours;
         alive = false;
     }
 
@@ -21,4 +25,9 @@ public class Cell {
     public String toString() {
         return alive ? "1" : "0";
     }
+
+    public void addNeighbours(Cell cell) {
+
+    }
+
 }

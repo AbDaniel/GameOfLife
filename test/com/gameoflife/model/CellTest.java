@@ -1,17 +1,34 @@
-package com.newgameoflife;
+package com.gameoflife.model;
 
+import nl.jqno.equalsverifier.EqualsVerifier;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 import static org.junit.Assert.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CellTest {
 
     Cell cell;
 
+    @Mock
+    Set<Cell> neigbhours;
+
     @Before
     public void setUp() {
-        cell = new Cell();
+        cell = new Cell(new ArrayList<Cell>());
+    }
+
+    @Test
+    public void equalsContract() {
+        EqualsVerifier.forClass(Cell.class).usingGetClass();
     }
 
     @Test
@@ -44,6 +61,14 @@ public class CellTest {
         String actualString = cell.toString();
 
         assertEquals("1", actualString);
+    }
+
+    @Test
+    public void shouldAddNeighbour() {
+        Cell cell = new Cell(new ArrayList<Cell>());
+        this.cell.addNeighbours(cell);
+
+        Mockito.verify(neigbhours).add(cell);
     }
 
 }
