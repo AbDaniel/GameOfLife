@@ -1,14 +1,14 @@
 package com.gameoflife.model;
 
-import java.util.ArrayList;
+import java.util.Set;
 
 public class Cell {
 
     private boolean alive;
-    private ArrayList<Cell> neigbhours;
+    private Set<Cell> neighbours;
 
-    public Cell(ArrayList<Cell> neighbours) {
-        this.neigbhours = neighbours;
+    public Cell(Set<Cell> neighbours) {
+        this.neighbours = neighbours;
         alive = false;
     }
 
@@ -27,7 +27,7 @@ public class Cell {
     }
 
     public void addNeighbours(Cell cell) {
-
+        neighbours.add(cell);
     }
 
 }

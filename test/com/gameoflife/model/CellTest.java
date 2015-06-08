@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.*;
@@ -19,11 +20,11 @@ public class CellTest {
     Cell cell;
 
     @Mock
-    Set<Cell> neigbhours;
+    Set<Cell> neighbours;
 
     @Before
     public void setUp() {
-        cell = new Cell(new ArrayList<Cell>());
+        cell = new Cell(neighbours);
     }
 
     @Test
@@ -65,10 +66,9 @@ public class CellTest {
 
     @Test
     public void shouldAddNeighbour() {
-        Cell cell = new Cell(new ArrayList<Cell>());
-        this.cell.addNeighbours(cell);
+        cell.addNeighbours(cell);
 
-        Mockito.verify(neigbhours).add(cell);
+        Mockito.verify(neighbours).add(cell);
     }
 
 }
