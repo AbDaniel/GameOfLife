@@ -33,7 +33,17 @@ public class CellTest {
     @Test
     public void shouldReturnStateAsStringIfStateIsDead() {
         String actuatString = cell.toString();
+
         assertEquals("0", actuatString);
+    }
+
+    @Test
+    public void shouldReturnStateAsStringIfStateIsAlive() {
+        cell.toggleState();
+
+        String actualString = cell.toString();
+
+        assertEquals("1", actualString);
     }
 
 }
