@@ -30,7 +30,7 @@ public class BoardTest {
         for (int i = 0; i < length; i++) {
             List<Cell> row = new ArrayList<>();
             for (int j = 0; j < length; j++) {
-                row.add(new Cell(alive, new HashSet<Cell>()));
+                row.add(new Cell(alive, new HashSet<>()));
             }
             cells.add(row);
         }

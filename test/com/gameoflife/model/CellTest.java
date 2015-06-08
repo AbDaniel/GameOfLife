@@ -8,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -39,16 +38,8 @@ public class CellTest {
     }
 
     @Test
-    public void shouldReturnZeroWhenNoNeighboursAreAlive() {
-        neighbours = new HashSet<>();
-        neighbours.add(new Cell(false, new HashSet<Cell>()));
-        neighbours.add(new Cell(false, new HashSet<Cell>()));
-        neighbours.add(new Cell(false, new HashSet<Cell>()));
-
-        cell = new Cell(false, neighbours);
-        int actualAliveNeighbours = cell.aliveNeighbours();
-
-        assertEquals(0, actualAliveNeighbours);
+    public void shouldPrintZeroWhenStateOfCellIsDead() {
+        assertEquals("0", cell.toString());
     }
 
 }
