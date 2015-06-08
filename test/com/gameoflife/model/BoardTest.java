@@ -25,11 +25,12 @@ public class BoardTest {
 
     private void setUpWithData() {
         int length = 3;
-        cells = new ArrayList<List<Cell>>();
+        boolean alive = false;
+        cells = new ArrayList<>();
         for (int i = 0; i < length; i++) {
-            List<Cell> row = new ArrayList<Cell>();
+            List<Cell> row = new ArrayList<>();
             for (int j = 0; j < length; j++) {
-                row.add(new Cell(new HashSet<Cell>()));
+                row.add(new Cell(alive, new HashSet<Cell>()));
             }
             cells.add(row);
         }

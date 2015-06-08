@@ -7,9 +7,9 @@ public class Cell {
     private boolean alive;
     private Set<Cell> neighbours;
 
-    public Cell(Set<Cell> neighbours) {
+    public Cell(boolean alive, Set<Cell> neighbours) {
+        this.alive = alive;
         this.neighbours = neighbours;
-        alive = false;
     }
 
     public boolean isAlive() {
@@ -25,4 +25,7 @@ public class Cell {
         neighbours.add(cell);
     }
 
+    public int aliveNeighbours() {
+        return 0;
+    }
 }

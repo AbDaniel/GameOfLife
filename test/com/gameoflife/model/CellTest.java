@@ -8,11 +8,10 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CellTest {
@@ -24,7 +23,7 @@ public class CellTest {
 
     @Before
     public void setUp() {
-        cell = new Cell(neighbours);
+        cell = new Cell(false, neighbours);
     }
 
     @Test
@@ -37,6 +36,19 @@ public class CellTest {
         cell.addNeighbours(cell);
 
         Mockito.verify(neighbours).add(cell);
+    }
+
+    @Test
+    public void shouldReturnZeroWhenNoNeighboursAreAlive() {
+        neighbours = new HashSet<>();
+        neighbours.add(new Cell(false, new HashSet<Cell>()));
+        neighbours.add(new Cell(false, new HashSet<Cell>()));
+        neighbours.add(new Cell(false, new HashSet<Cell>()));
+
+        cell = new Cell(false, neighbours);
+        int actualAliveNeighbours = cell.aliveNeighbours();
+
+        assertEquals(0, actualAliveNeighbours);
     }
 
 }
