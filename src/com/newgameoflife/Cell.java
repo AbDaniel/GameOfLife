@@ -16,4 +16,9 @@ public class Cell {
         alive = !alive;
         return alive;
     }
+
+    @Override
+    public String toString() {
+        return alive ? "1" : "0";
+    }
 }

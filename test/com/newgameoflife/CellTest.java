@@ -30,5 +30,10 @@ public class CellTest {
         assertFalse(cell.isAlive());
     }
 
+    @Test
+    public void shouldReturnStateAsStringIfStateIsDead() {
+        String actuatString = cell.toString();
+        assertEquals("0", actuatString);
+    }
 
 }
