@@ -42,4 +42,11 @@ public class CellTest {
         assertEquals("0", cell.toString());
     }
 
+    @Test
+    public void shouldPrintOneWhenStateOfCellIsAlive() {
+        cell = new Cell(true, neighbours);
+
+        assertEquals("1", cell.toString());
+    }
+
 }
