@@ -15,14 +15,14 @@ public class CellTest {
     }
 
     @Test
-    public void shouldToggleStateIfStateIsFalse() {
+    public void shouldToggleStateIfStateIsDead() {
         cell.toggleState();
 
         assertTrue(cell.isAlive());
     }
 
     @Test
-    public void shouldToggleStateIfStateIsTrue() {
+    public void shouldToggleStateIfStateIsAlive() {
         cell.toggleState();
 
         cell.toggleState();
