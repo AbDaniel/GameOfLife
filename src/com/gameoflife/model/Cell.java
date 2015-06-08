@@ -16,11 +16,6 @@ public class Cell {
         return alive;
     }
 
-    public boolean toggleState() {
-        alive = !alive;
-        return alive;
-    }
-
     @Override
     public String toString() {
         return alive ? "1" : "0";
