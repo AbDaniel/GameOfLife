@@ -80,7 +80,7 @@ public class CellTest {
     }
 
     @Test
-    public void shouldBeAliveIfAliveNeighboursAreThree() {
+    public void shouldBeAliveIfAliveNeighboursAreExactlyThree() {
         neighbours = new HashSet<>();
         neighbours.add(new Cell(true, new HashSet<>()));
         neighbours.add(new Cell(true, new HashSet<>()));
@@ -93,5 +93,32 @@ public class CellTest {
         assertTrue(cell.isAlive());
     }
 
+    @Test
+    public void shouldBeAliveIfAliveNeighboursAreExactlyTwo() {
+        neighbours = new HashSet<>();
+        neighbours.add(new Cell(true, new HashSet<>()));
+        neighbours.add(new Cell(true, new HashSet<>()));
+        neighbours.add(new Cell(false, new HashSet<>()));
+        neighbours.add(new Cell(false, new HashSet<>()));
+        cell = new Cell(true, neighbours);
+
+        cell.update();
+
+        assertTrue(cell.isAlive());
+    }
+
+    @Test
+    public void shouldBecomeAliveIfItHasExactlyThreeNeighbours() {
+        neighbours = new HashSet<>();
+        neighbours.add(new Cell(true, new HashSet<>()));
+        neighbours.add(new Cell(true, new HashSet<>()));
+        neighbours.add(new Cell(true, new HashSet<>()));
+        neighbours.add(new Cell(false, new HashSet<>()));
+        cell = new Cell(false, neighbours);
+
+        cell.update();
+
+        assertTrue(cell.isAlive());
+    }
 
 }
