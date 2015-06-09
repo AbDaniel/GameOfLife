@@ -79,4 +79,19 @@ public class CellTest {
         assertFalse(cell.isAlive());
     }
 
+    @Test
+    public void shouldBeAliveIfAliveNeighboursAreThree() {
+        neighbours = new HashSet<>();
+        neighbours.add(new Cell(true, new HashSet<>()));
+        neighbours.add(new Cell(true, new HashSet<>()));
+        neighbours.add(new Cell(true, new HashSet<>()));
+        neighbours.add(new Cell(false, new HashSet<>()));
+        cell = new Cell(true, neighbours);
+
+        cell.update();
+
+        assertTrue(cell.isAlive());
+    }
+
+
 }
