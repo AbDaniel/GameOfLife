@@ -25,7 +25,21 @@ public class Cell {
         neighbours.add(cell);
     }
 
-    public int aliveNeighbours() {
-        return 0;
+    private int aliveNeighbours() {
+        return (int) neighbours.stream().filter(Cell::isAlive).count();
     }
+
+    public void update() {
+        if (alive) {
+            if (aliveNeighbours() < 2) alive = false;
+            else if (aliveNeighbours() > 3) alive = false;
+
+        } else if (aliveNeighbours() == 3) alive = true;
+        notifyNeighbours();
+    }
+
+    private void notifyNeighbours() {
+        neighbours.forEach(Cell::update);
+    }
+
 }

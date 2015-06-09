@@ -8,9 +8,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CellTest {
@@ -26,7 +29,7 @@ public class CellTest {
     }
 
     @Test
-    public void equalsContract() {
+    public void shouldVerifyEqualsContract() {
         EqualsVerifier.forClass(Cell.class).usingGetClass();
     }
 
@@ -47,6 +50,19 @@ public class CellTest {
         cell = new Cell(true, neighbours);
 
         assertEquals("1", cell.toString());
+    }
+
+    @Test
+    public void shouldBeDeadIfAliveNeighboursAreLessThanTwo() {
+        neighbours = new HashSet<>();
+        neighbours.add(new Cell(false, new HashSet<>()));
+        neighbours.add(new Cell(false, new HashSet<>()));
+        neighbours.add(new Cell(false, new HashSet<>()));
+        cell = new Cell(true, neighbours);
+
+        cell.update();
+
+        assertFalse(cell.isAlive());
     }
 
 }
